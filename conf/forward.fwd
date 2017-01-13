@@ -1,0 +1,27 @@
+#!/bin/sh
+
+if [ -z "$forward_to" ] ; then
+  echo "action config could not be generated as forward_to not set"
+  exit
+fi
+
+proto="${forward_to%%:*}"
+dest="${forward_to#*:}"
+if [ "$proto" != "tcp" ] && [ "$proto" != "udp" ] ; then
+  dest="${forward_to}"
+  proto=udp
+fi
+
+h="${dest%:*}"
+p="${dest#*:}"
+if [ "$p" = "$dest" ] && [ "$proto" = "tcp" ] ; then
+  p=10514
+elif [ "$p" = "$dest" ] && [ "$proto" = "udp" ] ; then
+  p=514
+fi
+
+cat <<EOF
+#module(load="omfwd")
+action(type="omfwd" Target="$h" Port="$p" Protocol="$proto" )
+EOF
+

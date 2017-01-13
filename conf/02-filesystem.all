@@ -1,0 +1,12 @@
+# default permissions for all log files.
+$FileOwner root
+$FileGroup adm
+$FileCreateMode 0640
+$DirCreateMode 0755
+$Umask 0022
+
+# An on-disk queue is created for this action. If the remote host is
+# down, messages are spooled to disk and sent when it is up again.
+$WorkDirectory /var/spool/rsyslog # where to place spool files
+#$ActionQueueFileName uniqName # unique name prefix for spool files
+$ActionQueueMaxDiskSpace 500m   # 1gb space limit (use as much as possible)
