@@ -27,5 +27,5 @@ if [ -n "$forward_to" ] ; then
   conf=/etc/rsyslog_fwd.conf
 fi
 
-rsyslogd -n -f $conf
+rsyslogd -n -f $conf $rsyslogd_options
 

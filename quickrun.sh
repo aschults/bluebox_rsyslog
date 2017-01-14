@@ -3,5 +3,5 @@ docker build -t mytst .
 docker stop test1 || true
 docker rm test1 || true
 
-docker run --name=test1 -p 514:514/udp -ti --entrypoint=sh  mytst
+docker run -e rsyslog_debug=1 --name=test1 -ti --entrypoint=sh  mytst
 

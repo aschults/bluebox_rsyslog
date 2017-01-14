@@ -3,11 +3,10 @@ FROM alpine
 RUN apk update && apk add rsyslog gettext
 
 
-EXPOSE 514/udp
+EXPOSE 514/udp 10514
 
-RUN mkdir -p /var/spool/rsyslog /etc/rsyslog_start.d
-#RUN mkdir -p /var/spool/squid/cache /var/log/squid ; chown -R squid:squid /var/spool/squid/cache /var/log/squid
-#VOLUME ["/var/spool/squid/cache", "/var/log/squid", "/var/spool/squid/ssl"]
+RUN mkdir -p /var/spool/rsyslog /var/lib/rsyslog/logs /var/lib/rsyslog/sources /etc/rsyslog_start.d
+VOLUME ["/var/lib/rsyslog/logs","/var/lib/rsyslog/sources"]
 
 COPY rsyslog.conf /etc
 COPY rsyslog_fwd.conf /etc
