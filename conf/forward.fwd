@@ -22,6 +22,6 @@ fi
 
 cat <<EOF
 #module(load="omfwd")
-action(type="omfwd" Target="$h" Port="$p" Protocol="$proto" )
+action(type="omfwd" RebindInterval="120" KeepAlive="on" KeepAlive.Interval="5" KeepAlive.Time="5" Target="$h" Port="$p" Protocol="$proto" )
 EOF
 
