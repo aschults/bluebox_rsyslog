@@ -27,7 +27,8 @@ cat <<EOF
 \$ActionQueueFileName srvrfwd # set file name, also enables disk mode
 \$ActionResumeRetryCount -1 # infinite retries on insert failure
 \$ActionQueueSaveOnShutdown on # save in-memory data if rsyslog shuts down
+\$ActionResumeInterval 20
 
-action(type="omfwd" RebindInterval="120" KeepAlive="on" KeepAlive.Interval="1" KeepAlive.Probes="1" KeepAlive.Time="5" Target="$h" Port="$p" Protocol="$proto" )
+action(type="omfwd"  KeepAlive="on" KeepAlive.Interval="1" KeepAlive.Probes="1" KeepAlive.Time="5" Target="$h" Port="$p" Protocol="$proto" )
 EOF
 
