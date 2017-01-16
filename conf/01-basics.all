@@ -15,6 +15,9 @@ $RepeatedMsgReduction on
 $ActionQueueSaveOnShutdown on # save messages to disk on shutdown
 $ActionQueueType LinkedList   # run asynchronously
 
+$MainMsgQueueSize 100000 
+
+
 #Set local property so we can properly set up dirs
 set $.hostname = $HOSTNAME;
 if $HOSTNAME == $$myhostname then {
