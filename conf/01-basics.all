@@ -16,6 +16,9 @@ $ActionQueueSaveOnShutdown on # save messages to disk on shutdown
 $ActionQueueType LinkedList   # run asynchronously
 
 $MainMsgQueueSize 100000 
+$MainMsgQueueType LinkedList
+$MainMsgResumeRetryCount -1
+$MainMsgQueueSaveOnShutdown on
 
 
 #Set local property so we can properly set up dirs
